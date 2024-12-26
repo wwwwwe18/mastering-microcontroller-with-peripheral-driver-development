@@ -4,7 +4,7 @@
  * @author         : May Wang
  * @brief          : Main program body
  ******************************************************************************
- * Description
+ * 004PeriClockEnable
  * Enable to peripheral clock for ADC1
  ******************************************************************************
  */
@@ -21,13 +21,13 @@
 
 int main(void)
 {
-    uint32_t *pRccApb2Enr = (uint32_t*)RCC_APB2_ENR_ADDR;
-    uint32_t *pAdcCr1Reg = (uint32_t*)ADC_CR1_REG_ADDR;
+    uint32_t *pRCC_APB2_ENR = (uint32_t*)RCC_APB2_ENR_ADDR;
+    uint32_t *pADC_CR1_REG = (uint32_t*)ADC_CR1_REG_ADDR;
 
     //****************************************
     // 1. Enable to peripheral clock for ADC1
     //****************************************
-    *pRccApb2Enr |= (1 << 8);
+    *pRCC_APB2_ENR |= (1 << 8);
 
     // Bit 8 ADC1EN: ADC1 clock enable
     // This bit is set and cleared by software.
@@ -37,7 +37,7 @@ int main(void)
     //****************************************
     // 2. Modify the ADC CR1 register
     //****************************************
-    *pAdcCr1Reg |= (1 << 8);
+    *pADC_CR1_REG |= (1 << 8);
 
     // Bit 8 SCAN: Scan mode
     // This bit is set and cleared by software to enable/disable the Scan mode. In Scan mode, the
