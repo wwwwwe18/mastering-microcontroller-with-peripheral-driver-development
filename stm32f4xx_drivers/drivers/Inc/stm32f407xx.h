@@ -233,6 +233,11 @@ typedef struct
 #define UART5				((USART_RegDef_t*)UART5_BASEADDR)
 #define USART6				((USART_RegDef_t*)USART6_BASEADDR)
 
+//******************************************************************************************
+/*
+ * Clock Enable Macros
+ */
+//******************************************************************************************
 /*
  * Clock Enable Macros for GPIOx peripherals
  */
@@ -314,6 +319,11 @@ typedef struct
 	1: USART2 clock enabled
  */
 
+//******************************************************************************************
+/*
+ * Clock Disable Macros
+ */
+//******************************************************************************************
 /*
  * Clock Disable Macros for GPIOx peripherals
  */
@@ -353,7 +363,41 @@ typedef struct
 #define UART4_PCLK_DI()		(RCC->APB1ENR &= ~(1 << 19))
 #define UART5_PCLK_DI()		(RCC->APB1ENR &= ~(1 << 20))
 
+//******************************************************************************************
+/*
+ *  Macros to reset GPIOx peripherals
+ */
+//******************************************************************************************
+/*
+	Bit 0 GPIOARST: IO port A reset
+	Set and cleared by software.
+	0: does not reset IO port A
+	1: resets IO port A
+ */
+#define GPIOA_REG_RESET()	do{(RCC->AHB1RSTR |= (1 << 0)); (RCC->AHB1RSTR &= ~(1 << 0));}while(0)
+#define GPIOB_REG_RESET()	do{(RCC->AHB1RSTR |= (1 << 1)); (RCC->AHB1RSTR &= ~(1 << 1));}while(0)
+#define GPIOC_REG_RESET()	do{(RCC->AHB1RSTR |= (1 << 2)); (RCC->AHB1RSTR &= ~(1 << 2));}while(0)
+#define GPIOD_REG_RESET()	do{(RCC->AHB1RSTR |= (1 << 3)); (RCC->AHB1RSTR &= ~(1 << 3));}while(0)
+#define GPIOE_REG_RESET()	do{(RCC->AHB1RSTR |= (1 << 4)); (RCC->AHB1RSTR &= ~(1 << 4));}while(0)
+#define GPIOF_REG_RESET()	do{(RCC->AHB1RSTR |= (1 << 5)); (RCC->AHB1RSTR &= ~(1 << 5));}while(0)
+#define GPIOG_REG_RESET()	do{(RCC->AHB1RSTR |= (1 << 6)); (RCC->AHB1RSTR &= ~(1 << 6));}while(0)
+#define GPIOH_REG_RESET()	do{(RCC->AHB1RSTR |= (1 << 7)); (RCC->AHB1RSTR &= ~(1 << 7));}while(0)
+#define GPIOI_REG_RESET()	do{(RCC->AHB1RSTR |= (1 << 8)); (RCC->AHB1RSTR &= ~(1 << 8));}while(0)
 
+/*
+ * Some generic macros
+ */
+#define ENABLE				1
+#define DISABLE				0
+
+#define SET					ENABLE
+#define RESET				DISABLE
+
+#define GPIO_PIN_SET		SET
+#define GPIO_PIN_RESET		RESET
+
+#define FLAG_RESET			RESET
+#define FLAG_SET			SET
 
 #include "stm32f407xx_gpio_driver.h"
 
