@@ -12,6 +12,8 @@
 
 #define __vo volatile
 
+/********************************** base address **********************************/
+
 /*
  * Base addresses of Flash and SRAM memories
  */
@@ -71,7 +73,7 @@
 #define USART6_BASEADDR		(APB2PERIPH_BASEADDR + 0x1400)
 
 
-/**********************************peripheral register definition structures **********************************/
+/********************************** peripheral register definition structures **********************************/
 
 /*
  * peripheral register definition structure for GPIO
